@@ -6,22 +6,22 @@ public class Cycle {
 
         System.out.println();
 
-        int valueForFirstInterval = 6;
-        while(valueForFirstInterval >= -6) {
-            System.out.print(valueForFirstInterval + " ");
-            valueForFirstInterval -= 2;
+        int counter = 6;
+        while(counter >= -6) {
+            System.out.print(counter + " ");
+            counter -= 2;
         }
 
         System.out.println();
 
-        int valueForSecondInterval = 10;
+        counter = 10;
         int sum = 0;
         do {
-            if(valueForSecondInterval % 2 != 0) {
-                sum += valueForSecondInterval;
+            if(counter % 2 != 0) {
+                sum += counter;
             }
-            valueForSecondInterval++;
-        } while(valueForSecondInterval <= 20);
+            counter++;
+        } while(counter <= 20);
         System.out.println(sum);
     }
 }
