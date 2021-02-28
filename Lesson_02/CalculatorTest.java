@@ -12,13 +12,23 @@ public class CalculatorTest {
             calculator.setMathSign(scanner.nextLine());
             System.out.print("Введите второе число: ");
             calculator.setSecondInputNumber(scanner.nextInt());
-            
-            calculator.calc(calculator);
-            scanner.nextLine();
 
-            System.out.print("Хотите продолжить вычисления? [yes/no]: ");
+            calculator.calculate();
+
             String answer = scanner.nextLine();
-            if(answer.equals("no")) {
+            while(true) {
+                System.out.print("Хотите продолжить вычисления? [yes/no]: ");
+                answer = scanner.nextLine();
+                    if(answer.equals("yes") || (answer.equals("no"))) {
+                        break;
+                    } else {
+                        System.out.println("Повторите ввод");
+                    }
+            }
+
+            if(answer.equals("yes")) {
+                continue;
+            } else {
                 break;
             }
         }
