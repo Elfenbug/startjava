@@ -5,22 +5,21 @@ public class GuessNumber {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
     public int compNumber = random.nextInt(101);
-
+    
     public void startGame() {
-
-
         while(true) {
             System.out.println("Компьютер загадал " + compNumber);
             System.out.print("Первый игрок, введите число: ");
-            firstPlayer.setNumber(scanner.nextInt());
+            GuessNumberTest.firstPlayer.setNumber(scanner.nextInt());
             System.out.print("Второй игрок, введите число: ");
-            secondPlayer.setNumber(scanner.nextInt());
+            GuessNumberTest.secondPlayer.setNumber(scanner.nextInt());
 
-            if(firstPlayer.getNumber() != compNumber || secondPlayer.getNumber() != compNumber) {
-                GuessNumberTest.guessNumber.compareNumber(firstPlayer, compNumber);
-                GuessNumberTest.guessNumber.compareNumber(secondPlayer, compNumber);
-                continue;
-            } else if(firstPlayer.getNumber() == compNumber && secondPlayer.getNumber() == compNumber) {
+            if(GuessNumberTest.firstPlayer.getNumber() != compNumber || GuessNumberTest.secondPlayer.getNumber() != compNumber) {
+                GuessNumberTest.guessNumber.compareNumber(GuessNumberTest.firstPlayer, compNumber);
+                GuessNumberTest.guessNumber.compareNumber(GuessNumberTest.secondPlayer, compNumber);
+            } 
+
+            if(GuessNumberTest.firstPlayer.getNumber() == compNumber && GuessNumberTest.secondPlayer.getNumber() == compNumber) {
                 System.out.println("Ничья!");
                 System.out.print("Хотите продолжить игру? [yes/no]: ");
                 String answer = scanner.nextLine();
@@ -29,14 +28,27 @@ public class GuessNumber {
                     } else if(answer.equals("yes")) {
                         continue;
                     }
-            } else if(firstPlayer.getNumber() == compNumber || secondPlayer.getNumber() == compNumber) {
-                    System.out.print("Хотите продолжить игру? [yes/no]: ");
-                    String answer = scanner.nextLine();
+            } else if(GuessNumberTest.firstPlayer.getNumber() == compNumber || GuessNumberTest.secondPlayer.getNumber() == compNumber) {
+                System.out.print("Хотите продолжить игру? [yes/no]: ");
+                scanner.nextLine();
+                String answer = scanner.nextLine();
+
+                while(true) {
                     if(answer.equals("no")) {
                         break;
                     } else if(answer.equals("yes")) {
+                        compNumber = random.nextInt(101);
+                        break;
+                    } else {
+                        System.out.print("Повторите ввод: ");
+                        answer = scanner.nextLine();
                         continue;
                     }
+                }
+
+                if (answer.equals("no")) {
+                    break;
+                }
             }
         }
     }
@@ -47,10 +59,8 @@ public class GuessNumber {
         } else if(player.getNumber() < compNumber) {
             System.out.println(player.getName() + " введенное вами число меньше того, что загадал компьютер");
         } else if(player.getNumber() == compNumber)  {
-            System.out.println("Вы угадали! " + player.getName() + " победил!");
+            System.out.println(player.getName() + " победил!");
         }
     }
-
-
 }
 

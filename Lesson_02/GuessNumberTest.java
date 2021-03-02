@@ -3,15 +3,18 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
     Random random = new Random();
-    public int compNumber = random.nextInt(101);
     Scanner scanner = new Scanner(System.in);
-    GuessNumber guessNumber = new GuessNumber();
+    public static GuessNumber guessNumber = new GuessNumber();
+    public static Player firstPlayer;
+    public static Player secondPlayer;
     
     public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        GuessNumber guessNumber = new GuessNumber();
         System.out.print("Введите имя первого игрока: ");
-        Player firstPlayer = new Player(scanner.nextLine());
+        firstPlayer = new Player(scanner.nextLine());
         System.out.print("Введите имя второго игрока: ");
-        Player secondPlayer = new Player(scanner.nextLine());
+        secondPlayer = new Player(scanner.nextLine());
 
         guessNumber.startGame();
     }
