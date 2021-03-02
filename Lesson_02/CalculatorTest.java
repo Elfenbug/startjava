@@ -15,15 +15,12 @@ public class CalculatorTest {
 
             calculator.calculate();
 
+            System.out.print("Хотите продолжить вычисления? [yes/no]: ");
             String answer = scanner.nextLine();
-            while(true) {
-                System.out.print("Хотите продолжить вычисления? [yes/no]: ");
+            
+            while(!answer.equals("yes") || !answer.equals("no")) {
+                System.out.println("Повторите ввод");
                 answer = scanner.nextLine();
-                    if(answer.equals("yes") || (answer.equals("no"))) {
-                        break;
-                    } else {
-                        System.out.println("Повторите ввод");
-                    }
             }
 
             if(answer.equals("yes")) {
