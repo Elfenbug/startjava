@@ -3,15 +3,17 @@ import java.util.Scanner;
 
 public class GuessNumber {
     Player firstPlayer;
-    Player firstPlayer;
+    Player secondPlayer;
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
     private int compNumber = random.nextInt(101);
 
-    public void startGame() {
-        firstPlayer = new Player();
-        firstPlayer = new Player();
+    public GuessNumber(Player firstPlayer, Player secondPlayer) {
+        this.firstPlayer = firstPlayer;
+        this.secondPlayer = secondPlayer;
+    }
 
+    public void startGame() {
         while(true) {
             System.out.println("Компьютер загадал " + compNumber);
             System.out.print("Первый игрок, введите число: ");
@@ -19,29 +21,15 @@ public class GuessNumber {
             System.out.print("Второй игрок, введите число: ");
             secondPlayer.setNumber(scanner.nextInt());
 
-            if(GuessNumberTest.firstPlayer.getNumber() != compNumber || GuessNumberTest.secondPlayer.getNumber() != compNumber) {
-                GuessNumberTest.guessNumber.compareNumber(GuessNumberTest.firstPlayer, compNumber);
-                GuessNumberTest.guessNumber.compareNumber(GuessNumberTest.secondPlayer, compNumber);
+            if(GuessNumberTest.guessNumber.firstPlayer.getNumber() != compNumber || GuessNumberTest.guessNumber.secondPlayer.getNumber() != compNumber) {
+                compareNumber(firstPlayer, compNumber);
+                compareNumber(secondPlayer, compNumber);
             }
 
-            if(GuessNumberTest.firstPlayer.getNumber() == compNumber && GuessNumberTest.secondPlayer.getNumber() == compNumber) {
+            if(GuessNumberTest.guessNumber.firstPlayer.getNumber() == compNumber && GuessNumberTest.guessNumber.secondPlayer.getNumber() == compNumber) {
                 System.out.println("Ничья!");
-                System.out.print("Хотите продолжить игру? [yes/no]: ");
-                String answer = scanner.nextLine();
-                    if(answer.equals("no")) {
-                        break;
-                    } else if(answer.equals("yes")) {
-                        continue;
-                    }
-            } 
-
-
-
-
-                if (answer.equals("no")) {
-                    break;
-                }
             }
+            break;
         }
     }
 
