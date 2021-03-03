@@ -17,5 +17,23 @@ public class GuessNumberTest {
         secondPlayer = new Player(scanner.nextLine());
 
         guessNumber.startGame();
+
+        while(GuessNumberTest.firstPlayer.getNumber() == compNumber || GuessNumberTest.secondPlayer.getNumber() == compNumber) {
+                System.out.print("Хотите продолжить игру? [yes/no]: ");
+                scanner.nextLine();
+                String answer = scanner.nextLine();
+
+                while(true) {
+                    if(answer.equals("no")) {
+                        break;
+                    } else if(answer.equals("yes")) {
+                        compNumber = random.nextInt(101);
+                        break;
+                    } else {
+                        System.out.print("Повторите ввод: ");
+                        answer = scanner.nextLine();
+                        continue;
+                    }
+                }
     }
 }
