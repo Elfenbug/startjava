@@ -6,7 +6,7 @@ public class GuessNumber {
     Player secondPlayer;
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
-    private int compNumber = random.nextInt(101);
+    int compNumber = random.nextInt(101);
 
     public GuessNumber(Player firstPlayer, Player secondPlayer) {
         this.firstPlayer = firstPlayer;
@@ -14,19 +14,20 @@ public class GuessNumber {
     }
 
     public void startGame() {
+        GuessNumber guessNumber = new GuessNumber();
         while(true) {
             System.out.println("Компьютер загадал " + compNumber);
             System.out.print("Первый игрок, введите число: ");
-            firstPlayer.setNumber(scanner.nextInt());
+            GuessNumberTest.firstPlayer.setNumber(scanner.nextInt());
             System.out.print("Второй игрок, введите число: ");
             secondPlayer.setNumber(scanner.nextInt());
 
-            if(GuessNumberTest.guessNumber.firstPlayer.getNumber() != compNumber || GuessNumberTest.guessNumber.secondPlayer.getNumber() != compNumber) {
+            if(firstPlayer.getNumber() != compNumber || secondPlayer.getNumber() != compNumber) {
                 compareNumber(firstPlayer, compNumber);
                 compareNumber(secondPlayer, compNumber);
             }
 
-            if(GuessNumberTest.guessNumber.firstPlayer.getNumber() == compNumber && GuessNumberTest.guessNumber.secondPlayer.getNumber() == compNumber) {
+            if(firstPlayer.getNumber() == compNumber && secondPlayer.getNumber() == compNumber) {
                 System.out.println("Ничья!");
             }
             break;
