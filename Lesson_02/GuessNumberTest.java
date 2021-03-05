@@ -10,27 +10,22 @@ public class GuessNumberTest {
         Player firstPlayer = new Player(scanner.nextLine());
         System.out.print("Введите имя второго игрока: ");
         Player secondPlayer = new Player(scanner.nextLine());
-        GuessNumber guessNumber = new GuessNumber(firstPlayer, secondPlayer);
-        guessNumber.startGame();
+        GuessNumber game = new GuessNumber(firstPlayer, secondPlayer);
         
-        String answer = null;
-        while(true) {
-            if(firstPlayer.getNumber() == guessNumber.getSecretNumber() || secondPlayer.getNumber() == guessNumber.getSecretNumber()) {
+        game.start();
+        
+        String answer = "";
+        while(!answer.equals("no")) {
             System.out.print("Хотите продолжить игру? [yes/no]: ");
             answer = scanner.nextLine();
-            }
-                if(answer.equals("no")) {
-                    break;
-                }
                 if(answer.equals("yes")) {
-                    GuessNumber.setSecretNumbe(random.nextInt(101));
-                    guessNumber.startGame();
+                    game.setSecretNumber();
+                    game.start();
                     continue;
-                    } else {
-                        System.out.print("Повторите ввод: ");
-                        answer = scanner.nextLine();
-                        scanner.nextLine();
-                    }
+                } else {
+                    System.out.print("Повторите ввод: ");
+                    answer = scanner.nextLine();
+                } 
         }
     }
 }

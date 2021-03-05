@@ -17,11 +17,11 @@ public class GuessNumber {
         return secretNumber;
     }
 
-    public void setSecretNumber(GuessNumber secretNumber) {
-        this.setNumber = setNumber;
+    public void setSecretNumber() {
+        this.secretNumber = random.nextInt(101);
     }
 
-    public void startGame() {
+    public void start() {
         GuessNumber guessNumber = new GuessNumber(firstPlayer, secondPlayer);
         while(true) {
             System.out.println("Компьютер загадал " + guessNumber.getSecretNumber());
@@ -31,13 +31,8 @@ public class GuessNumber {
             secondPlayer.setNumber(scanner.nextInt());
 
             if(firstPlayer.getNumber() != guessNumber.getSecretNumber() || secondPlayer.getNumber() != guessNumber.getSecretNumber()) {
-                compareNumber(firstPlayer, guessNumber.getSecretNumber());
-                compareNumber(secondPlayer, guessNumber.getSecretNumber());
-            }
-
-            if(firstPlayer.getNumber() == guessNumber.getSecretNumber() && secondPlayer.getNumber() == guessNumber.getSecretNumber()) {
-                System.out.println("Ничья!");
-                break;
+                compareNumber(firstPlayer);
+                compareNumber(secondPlayer);
             }
 
             if(firstPlayer.getNumber() == guessNumber.getSecretNumber()) {
@@ -50,11 +45,13 @@ public class GuessNumber {
         }
     }
 
-    public void compareNumber(Player player, int secretNumber) {
+    private void compareNumber(Player player) {
         if(player.getNumber() > secretNumber) {
             System.out.println(player.getName() + " введенное вами число больше того, что загадал компьютер");
         } else if(player.getNumber() < secretNumber) {
             System.out.println(player.getName() + " введенное вами число меньше того, что загадал компьютер");
+        } else if(firstPlayer.getNumber() == secretNumber && secondPlayer.getNumber() == secretNumber) {
+            return;
         }
     }
 }
