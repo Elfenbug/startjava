@@ -14,41 +14,33 @@ public class GuessNumber {
     }
 
     public void start() {
-        while(firstPlayer.getNumber() != secretNumber && secondPlayer.getNumber() != secretNumber) {
+        while(true) {
             System.out.println("Компьютер загадал " + secretNumber);
             System.out.print("Первый игрок, введите число: ");
             firstPlayer.setNumber(scanner.nextInt());
+            if(compareNumbers(firstPlayer) == true) {
+                break;
+            }
             System.out.print("Второй игрок, введите число: ");
             secondPlayer.setNumber(scanner.nextInt());
-
-            compareNumber(firstPlayer);
-            printCompareNimber(firstPlayer);
-            compareNumber(secondPlayer);
-            printCompareNimber(secondPlayer);
+            if(compareNumbers(secondPlayer)) {
+                break;
+            }
         }
-        secretNumber = random.nextInt(101);
     }
 
-    private boolean compareNumber(Player player) {
+    private boolean compareNumbers(Player player) {
         if(player.getNumber() > secretNumber) {
+            System.out.println(player.getName() + " введенное вами число больше того, что загадал компьютер");
             return false;
         } else if(player.getNumber() < secretNumber) {
+            System.out.println(player.getName() + " введенное вами число меньше того, что загадал компьютер");
             return false;
         } else {
+            System.out.println(player.getName() + " угадал!");
+            secretNumber = random.nextInt(101);
             return true;
         }
     }
-
-    private void printCompareNimber(Player player) {
-        if(player.getNumber() > secretNumber) {
-            System.out.println(player.getName() + " введенное вами число больше того, что загадал компьютер");
-        } else if(player.getNumber() < secretNumber) {
-            System.out.println(player.getName() + " введенное вами число меньше того, что загадал компьютер");
-        } else if(player.getNumber() == secretNumber) {
-            System.out.println(player.getName() + " угадал!");
-        }
-    }
-
-
 }
 
