@@ -2,8 +2,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumberTest {
-    Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите имя первого игрока: ");
@@ -12,20 +10,18 @@ public class GuessNumberTest {
         Player secondPlayer = new Player(scanner.nextLine());
         GuessNumber game = new GuessNumber(firstPlayer, secondPlayer);
         
-        game.start();
-        
         String answer = "";
-        while(!answer.equals("no")) {
+        do {
+            game.start();
+
             System.out.print("Хотите продолжить игру? [yes/no]: ");
             answer = scanner.nextLine();
-                if(answer.equals("yes")) {
-                    game.setSecretNumber();
-                    game.start();
-                    continue;
-                } else {
-                    System.out.print("Повторите ввод: ");
-                    answer = scanner.nextLine();
-                } 
-        }
+            if(answer.equals("yes")) {
+                continue;
+            } else {
+                System.out.print("Повторите ввод: ");
+                answer = scanner.nextLine();
+            }
+        } while(!answer.equals("no"));
     }
 }
