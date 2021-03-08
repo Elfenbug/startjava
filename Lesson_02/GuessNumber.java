@@ -14,20 +14,17 @@ public class GuessNumber {
     }
 
     public void start() {
+        secretNumber = random.nextInt(101);
+        System.out.println("Компьютер загадал " + secretNumber);
         while(true) {
-            secretNumber = random.nextInt(101);
-            System.out.println("Компьютер загадал " + secretNumber);
-            while(true){
-                inputNumber(firstPlayer);
-                if(compareNumbers(firstPlayer)) {
-                    break;
-                }
-                inputNumber(secondPlayer);
-                if(compareNumbers(secondPlayer)) {
-                    break;
-                }
+            inputNumber(firstPlayer);
+            if(compareNumbers(firstPlayer)) {
+                break;
             }
-            break;
+            inputNumber(secondPlayer);
+            if(compareNumbers(secondPlayer)) {
+                break;
+            }
         }
     }
 
@@ -43,11 +40,10 @@ public class GuessNumber {
             } else if(player.getNumber() < secretNumber) {
                 System.out.println(player.getName() + " введенное вами число меньше того, что загадал компьютер");
             }
-        return false;
-        } else {
-            System.out.println(player.getName() + " угадал!");
-            return true;
+            return false;
         }
+        System.out.println(player.getName() + " угадал!");
+        return true;
     }
 }
 
