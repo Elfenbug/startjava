@@ -1,3 +1,5 @@
+package com.startjava.lesson_01.calculator;
+
 public class Calculator {
     public static void main(String[] args) {
         int firstInputNumber = 30;

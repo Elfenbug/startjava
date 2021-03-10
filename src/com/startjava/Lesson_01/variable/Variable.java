@@ -1,3 +1,5 @@
+package com.startjava.lesson_01.variable;
+
 public class Variable {
     public static void main(String[] args) {
         byte core = 4;

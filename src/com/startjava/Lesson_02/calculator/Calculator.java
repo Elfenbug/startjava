@@ -1,3 +1,5 @@
+package com.startjava.lesson_02.calculator;
+
 public class Calculator {
     private int firstInputNumber;
     private int secondInputNumber;

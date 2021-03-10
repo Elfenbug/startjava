@@ -1,3 +1,5 @@
+package com.startjava.lesson_01.game;
+
 public class GuessNumber {
     public static void main(String[] args) {
         int compNumber = 30;
