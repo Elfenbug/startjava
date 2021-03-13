@@ -39,8 +39,6 @@ public class GuessNumber {
     }
 
     public void printInfo(Player firstPlayer, Player secondPlayer) {
-
-
         if(firstPlayer.getNumber() == secretNumber) {
             System.out.println("Игрок " + firstPlayer.getName() + " угадал число " + secretNumber + " с " + countFirstPlayer + " попытки");
         } else if(secondPlayer.getNumber() == secretNumber) {
