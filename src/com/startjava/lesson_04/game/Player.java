@@ -1,10 +1,11 @@
 package com.startjava.lesson_04.game;
 
+import java.util.Arrays;
+
 public class Player {
     private String name;
-    private int number;
     private int[] numbers = new int[10];
-    private int countPlayer;
+    private int attemptNumber;
 
     public Player(String name) {
         this.name = name;
@@ -14,27 +15,19 @@ public class Player {
         return name;
     }
 
-    public int getNumber() {
-        return number;
-    }
-    
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
     public int[] getNumbers() {
-        return numbers;
+        return Arrays.copyOf(numbers, numbers.length);
     }
 
-    public void setNumbers(int[] numbers) {
-        this.numbers = numbers;
+    public void setNumbers(int value) {
+        this.numbers[attemptNumber] = value;
     }
 
-    public int getCountPlayer() {
-        return countPlayer;
+    public int getAttemptNumber() {
+        return attemptNumber;
     }
 
-    public void setCountPlayer(int countPlayer) {
-        this.countPlayer = countPlayer;
+    public void setAttemptNumber(int attemptNumber) {
+        this.attemptNumber = attemptNumber;
     }
 }
