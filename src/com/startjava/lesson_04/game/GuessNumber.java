@@ -35,23 +35,21 @@ public class GuessNumber {
 
         tryCounter();
         printInfo(firstPlayer, secondPlayer);
-        resetValues();
+        firstPlayer.resetNumbersAndAttemptNumber();
+        secondPlayer.resetNumbersAndAttemptNumber();
     }
 
     private void inputNumber(Player player) {
         System.out.print(player.getName()+ ", введите число: ");
         player.setNumbers(scanner.nextInt());
+        player.setAttemptNumber(player.getAttemptNumber()+1);
     }
 
     private boolean compareNumbers(Player player) {
-        if(player.getNumbers()[player.getAttemptNumber()] != secretNumber) {
-                System.out.println((player.getNumbers()[player.getAttemptNumber()] > secretNumber) ?
-                        (player.getName() + " введенное вами число больше того, что загадал компьютер") :
-                        (player.getName() + " введенное вами число меньше того, что загадал компьютер"));
-            player.setAttemptNumber(player.getAttemptNumber()+1);
+        if(player.getNumbers()[player.getAttemptNumber() - 1] != secretNumber) {
+            System.out.println(player.getName() + " введенное вами число " + ((player.getNumbers()[player.getAttemptNumber() - 1] > secretNumber) ? "больше" : "меньше") + " того, что загадал компьютер");
             return false;
         }
-        player.setAttemptNumber(player.getAttemptNumber()+1);
         System.out.println(player.getName() + " угадал!");
         return true;
     }
@@ -65,20 +63,13 @@ public class GuessNumber {
     }
 
     private void printInfo(Player firstPlayer, Player secondPlayer) {
-        if(firstPlayer.getNumbers()[firstPlayer.getAttemptNumber() -1] == secretNumber) {
+        if(firstPlayer.getNumbers()[firstPlayer.getAttemptNumber() - 1] == secretNumber) {
             System.out.println("Игрок " + firstPlayer.getName() + " угадал число " + secretNumber + " с " + firstPlayer.getAttemptNumber() + " попытки");
         } else if(secondPlayer.getNumbers()[secondPlayer.getAttemptNumber() - 1] == secretNumber) {
             System.out.println("Игрок " + secondPlayer.getName() + " угадал число " + secretNumber + " с " + secondPlayer.getAttemptNumber() + " попытки");
         }
         System.out.println(Arrays.toString(Arrays.copyOf(firstPlayer.getNumbers(), firstPlayer.getAttemptNumber())));
         System.out.println(Arrays.toString(Arrays.copyOf(secondPlayer.getNumbers(), secondPlayer.getAttemptNumber())));
-    }
-
-    private void resetValues() {
-        Arrays.fill(firstPlayer.getNumbers(), 0, firstPlayer.getAttemptNumber(), 0);
-        Arrays.fill(secondPlayer.getNumbers(), 0, secondPlayer.getAttemptNumber(), 0);
-        firstPlayer.setAttemptNumber(0);
-        secondPlayer.setAttemptNumber(0);
     }
 }
 
