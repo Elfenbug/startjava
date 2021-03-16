@@ -42,7 +42,7 @@ public class GuessNumber {
     private void inputNumber(Player player) {
         System.out.print(player.getName()+ ", введите число: ");
         player.setNumbers(scanner.nextInt());
-        player.setAttemptNumber(player.getAttemptNumber()+1);
+        player.setAttemptNumber(player.getAttemptNumber() + 1);
     }
 
     private boolean compareNumbers(Player player) {
