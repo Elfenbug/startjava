@@ -19,7 +19,7 @@ public class Player {
         return Arrays.copyOf(numbers, attemptNumber + 1);
     }
 
-    public void setNumbers(int number) {
+    public void setNumber(int number) {
         numbers[attemptNumber] = number;
     }
 

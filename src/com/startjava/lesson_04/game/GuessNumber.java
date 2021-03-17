@@ -41,17 +41,19 @@ public class GuessNumber {
 
     private void inputNumber(Player player) {
         System.out.print(player.getName()+ ", введите число: ");
-        player.setNumbers(scanner.nextInt());
+        player.setNumber(scanner.nextInt());
         player.setAttemptNumber(player.getAttemptNumber() + 1);
     }
 
     private boolean compareNumbers(Player player) {
-        if(player.getNumbers()[player.getAttemptNumber() - 1] != secretNumber) {
-            System.out.println(player.getName() + " введенное вами число " + ((player.getNumbers()[player.getAttemptNumber() - 1] > secretNumber) ? "больше" : "меньше") + " того, что загадал компьютер");
-            return false;
+        int getLastNumber = player.getNumbers()[player.getAttemptNumber() - 1];
+        boolean compareNumber = getLastNumber > secretNumber;
+        if(getLastNumber == secretNumber) {
+            System.out.println(player.getName() + " угадал!");
+            return true;
         }
-        System.out.println(player.getName() + " угадал!");
-        return true;
+        System.out.println(player.getName() + " введенное вами число " + (compareNumber ? "больше" : "меньше") + " того, что загадал компьютер");
+        return false;
     }
 
     private void tryCounter() {
