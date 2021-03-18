@@ -21,14 +21,11 @@ public class Player {
 
     public void setNumber(int number) {
         numbers[attemptNumber] = number;
+        attemptNumber++;
     }
 
     public int getAttemptNumber() {
         return attemptNumber;
-    }
-
-    public void setAttemptNumber(int attemptNumber) {
-        this.attemptNumber = attemptNumber;
     }
 
     public void resetNumbersAndAttemptNumber() {
