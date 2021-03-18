@@ -46,13 +46,12 @@ public class GuessNumber {
     }
 
     private boolean compareNumbers(Player player) {
-        int getLastNumber = player.getNumbers()[player.getAttemptNumber() - 1];
-        boolean compareNumber = getLastNumber > secretNumber;
-        if(getLastNumber == secretNumber) {
+        String moreLess = player.getLastNumber() > secretNumber ? "больше" : "меньше";
+        if(player.getLastNumber() == secretNumber) {
             System.out.println(player.getName() + " угадал!");
             return true;
         }
-        System.out.println(player.getName() + " введенное вами число " + (compareNumber ? "больше" : "меньше") + " того, что загадал компьютер");
+        System.out.println("Введенное вами число " + moreLess + " того, что загадал компьютер");
         return false;
     }
 
@@ -65,13 +64,13 @@ public class GuessNumber {
     }
 
     private void printInfo(Player firstPlayer, Player secondPlayer) {
-        if(firstPlayer.getNumbers()[firstPlayer.getAttemptNumber() - 1] == secretNumber) {
+        if(firstPlayer.getLastNumber() == secretNumber) {
             System.out.println("Игрок " + firstPlayer.getName() + " угадал число " + secretNumber + " с " + firstPlayer.getAttemptNumber() + " попытки");
-        } else if(secondPlayer.getNumbers()[secondPlayer.getAttemptNumber() - 1] == secretNumber) {
+        } else if(secondPlayer.getLastNumber() == secretNumber) {
             System.out.println("Игрок " + secondPlayer.getName() + " угадал число " + secretNumber + " с " + secondPlayer.getAttemptNumber() + " попытки");
         }
-        System.out.println(Arrays.toString(Arrays.copyOf(firstPlayer.getNumbers(), firstPlayer.getAttemptNumber())));
-        System.out.println(Arrays.toString(Arrays.copyOf(secondPlayer.getNumbers(), secondPlayer.getAttemptNumber())));
+        firstPlayer.printNumbers();
+        secondPlayer.printNumbers();
     }
 }
 
