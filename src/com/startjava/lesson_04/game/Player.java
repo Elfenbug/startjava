@@ -36,14 +36,7 @@ public class Player {
         attemptNumber = 0;
     }
 
-    public int getLastNumber () {
-        return getNumbers()[getAttemptNumber() - 1];
-    }
-
-    public void printNumbers() {
-        for(int i = 0; i < getNumbers().length - 1; i++) {
-            System.out.print(getNumbers()[i] + " ");
-        }
-        System.out.println();
+    public int getLastNumber() {
+        return numbers[attemptNumber - 1];
     }
 }

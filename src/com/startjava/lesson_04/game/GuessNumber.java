@@ -24,6 +24,7 @@ public class GuessNumber {
 
         for (int i = 0; i < 10; i++) {
             inputNumber(firstPlayer);
+            setAttemptNumber(player.getAttemptNumber() + 1);
             if (compareNumbers(firstPlayer)) {
                 break;
             }
@@ -46,11 +47,11 @@ public class GuessNumber {
     }
 
     private boolean compareNumbers(Player player) {
-        String moreLess = player.getLastNumber() > secretNumber ? "больше" : "меньше";
         if(player.getLastNumber() == secretNumber) {
             System.out.println(player.getName() + " угадал!");
             return true;
         }
+        String moreLess = player.getLastNumber() > secretNumber ? "больше" : "меньше";
         System.out.println("Введенное вами число " + moreLess + " того, что загадал компьютер");
         return false;
     }
@@ -69,8 +70,15 @@ public class GuessNumber {
         } else if(secondPlayer.getLastNumber() == secretNumber) {
             System.out.println("Игрок " + secondPlayer.getName() + " угадал число " + secretNumber + " с " + secondPlayer.getAttemptNumber() + " попытки");
         }
-        firstPlayer.printNumbers();
-        secondPlayer.printNumbers();
+        printNumbers(firstPlayer);
+        printNumbers(secondPlayer);
+    }
+
+    public void printNumbers(Player player) {
+        for(int i = 0; i < player.getNumbers().length - 1; i++) {
+            System.out.print(player.getNumbers()[i] + " ");
+        }
+        System.out.println();
     }
 }
 
